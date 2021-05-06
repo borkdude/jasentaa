@@ -1,7 +1,8 @@
 (ns jasentaa.position
   (:require
    [clojure.string :as s])
-  #?(:clj (:import [java.text ParseException])))
+  ;;#?(:clj (:import [java.text ParseException]))
+  )
 
 (defrecord Location [char line col offset full-text])
 
@@ -43,7 +44,7 @@
 
 
 (defn parse-exception-interop [msg num]
-  #?(:clj (ParseException. msg num)
+  #?(:clj (Exception. msg num)
      :cljs (js/Error. msg)))
 
 (defn parse-exception [location]
